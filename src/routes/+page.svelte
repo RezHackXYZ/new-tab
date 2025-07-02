@@ -1,1 +1,3 @@
-hi
+<script>
+	window.location.replace("/app");
+</script>
