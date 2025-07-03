@@ -1,16 +1,18 @@
 <script>
-	let now;
-	let hours;
-	let minutes;
-	let amPm;
+	let now = new Date();
+	let hours = now.getHours();
+	let amPm = hours >= 12 ? "PM" : "AM";
+	hours = now.getHours() % 12;
+	hours = hours ? hours : 12;
+	let minutes = String(now.getMinutes()).padStart(2, "0");
 
 	setInterval(() => {
 		now = new Date();
 		hours = now.getHours();
-		minutes = now.getMinutes();
-		amPm = hours >= 12 ? "PM" : "AM";
+		amPm = hours >= 12 ? "pm" : "am";
 		hours = hours % 12;
 		hours = hours ? hours : 12;
+		minutes = String(now.getMinutes()).padStart(2, "0");
 	}, 1000);
 </script>
 

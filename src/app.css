@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap");
+@import "https://www.nerdfonts.com/assets/css/webfont.css";
 @import "tailwindcss";
 
 :root {
-    @apply bg-blue-200
+	@apply bg-blue-200 font-[Inter];
 }
