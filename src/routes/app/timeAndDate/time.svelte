@@ -1,7 +1,7 @@
 <script>
 	let now = new Date();
 	let hours = now.getHours();
-	let amPm = hours >= 12 ? "PM" : "AM";
+	let amPm = hours >= 12 ? "pm" : "am";
 	hours = now.getHours() % 12;
 	hours = hours ? hours : 12;
 	let minutes = String(now.getMinutes()).padStart(2, "0");
