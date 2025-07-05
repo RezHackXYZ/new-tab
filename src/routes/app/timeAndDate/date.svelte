@@ -26,4 +26,4 @@
 	}, 1000);
 </script>
 
-<span class="text-3xl text-blue-400">{day} {month} {year}</span>
+<span class="text-5xl text-blue-400">{day} {month} {year}</span>

@@ -17,6 +17,6 @@
 </script>
 
 <div>
-	<span class="text-9xl text-blue-600">{hours}:{minutes}</span>
-	<span class="text-6xl text-blue-400">{amPm}</span>
+	<span class="text-[200px] leading-none text-blue-600">{hours}:{minutes}</span>
+	<span class="text-9xl text-blue-400">{amPm}</span>
 </div>
