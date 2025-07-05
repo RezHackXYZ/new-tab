@@ -27,7 +27,7 @@
 />
 
 <label
-	class="z-30 flex items-center justify-center rounded-xl border-4 border-blue-400 bg-blue-300 px-5 py-2 transition has-[:focus]:-translate-y-48 has-[:focus]:scale-120 has-[:focus]:border-blue-600"
+	class="z-30 flex items-center justify-center rounded-xl border-4 border-blue-400 bg-blue-300 px-5 py-2 transition has-[:focus]:-translate-y-58 has-[:focus]:scale-120 has-[:focus]:border-blue-600"
 >
 	<Logo />
 	<input
