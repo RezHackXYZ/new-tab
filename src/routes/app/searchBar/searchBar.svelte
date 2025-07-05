@@ -3,7 +3,6 @@
 	import { IsSearching, SearchingValue, selectedIndex } from "./SearchBarStore";
 	import Autofill from "./autofill.svelte";
 	import Logo from "./logo.svelte";
-
 	let bar;
 
 	onMount(() => {
@@ -23,7 +22,7 @@
 		) {
 			bar.focus();
 			event.preventDefault();
-		}
+		} 
 	}}
 />
 

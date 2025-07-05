@@ -1,5 +1,6 @@
 <script>
 	import { IsSearching, SearchingValue, selectedIndex } from "./SearchBarStore";
+	import { shortcuts } from "../shortcuts/shortcuts.svelte.js";
 
 	let results = $state([]);
 
@@ -9,7 +10,13 @@
 		fetch(`app/searchBar/getSearchAutofillResults?q=${encodeURIComponent($SearchingValue)}`)
 			.then((response) => response.json())
 			.then((data) => {
-				results = data[1];
+				const num = Number($SearchingValue);
+
+				if (!isNaN(num) && Number.isInteger(num) && num > 0 && shortcuts[num - 1] !== undefined) {
+					results = [`${shortcuts[num - 1].name} - Shortcut ${[$SearchingValue]}`, ...data[1]];
+				} else {
+					results = data[1];
+				}
 			})
 			.catch((error) => console.error("Error fetching autofill data:", error));
 	});
@@ -29,9 +36,20 @@
 			$selectedIndex = ($selectedIndex - 1 + results.length) % results.length;
 			event.preventDefault();
 		} else if (event.key === "Enter") {
-			if (results[$selectedIndex]) {
+			const num = Number($SearchingValue);
+
+			if (
+				!isNaN(num) &&
+				$selectedIndex == 0 &&
+				Number.isInteger(num) &&
+				num > 0 &&
+				shortcuts[num - 1] !== undefined
+			) {
+				window.location.href = shortcuts[num - 1].link;
+			} else if (results[$selectedIndex]) {
 				window.location.href = `https://www.google.com/search?q=${encodeURIComponent(results[$selectedIndex])}`;
 			}
+
 			event.preventDefault();
 		}
 	}}
