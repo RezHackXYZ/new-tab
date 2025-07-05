@@ -13,16 +13,17 @@
 <svelte:window
 	on:keydown={(event) => {
 		if (
-			event.key === "Enter" ||
-			event.key === "/" ||
-			event.key === "k" ||
-			event.key === "f" ||
-			event.key === "K" ||
-			event.key === "F"
+			!$IsSearching &&
+			(event.key === "Enter" ||
+				event.key === "/" ||
+				event.key === "k" ||
+				event.key === "f" ||
+				event.key === "K" ||
+				event.key === "F")
 		) {
 			bar.focus();
 			event.preventDefault();
-		} 
+		}
 	}}
 />
 
