@@ -1,5 +1,5 @@
 <script>
-	import { IsSearching, SearchingValue } from "./SearchBarStore";
+	import { IsSearching, SearchingValue, selectedIndex } from "./SearchBarStore";
 
 	let results = $state([]);
 
@@ -13,26 +13,24 @@
 			})
 			.catch((error) => console.error("Error fetching autofill data:", error));
 	});
-
-	let selectedIndex = $state(0);
 </script>
 
 <svelte:window
 	on:keydown={(event) => {
 		if (event.key === "Escape") {
-			$IsSearching = false;
 			results = [];
-			selectedIndex = 0;
+			$selectedIndex = 0;
+			document.activeElement?.blur();
 			event.preventDefault();
 		} else if (event.key === "ArrowDown") {
-			selectedIndex = (selectedIndex + 1) % results.length;
+			$selectedIndex = ($selectedIndex + 1) % results.length;
 			event.preventDefault();
 		} else if (event.key === "ArrowUp") {
-			selectedIndex = (selectedIndex - 1 + results.length) % results.length;
+			$selectedIndex = ($selectedIndex - 1 + results.length) % results.length;
 			event.preventDefault();
 		} else if (event.key === "Enter") {
-			if (results[selectedIndex]) {
-				window.location.href = `https://www.google.com/search?q=${encodeURIComponent(results[selectedIndex])}`;
+			if (results[$selectedIndex]) {
+				window.location.href = `https://www.google.com/search?q=${encodeURIComponent(results[$selectedIndex])}`;
 			}
 			event.preventDefault();
 		}
@@ -51,7 +49,7 @@
 			<div
 				class="flex items-center gap-2 rounded-lg px-2 py-1 text-xl text-blue-400 transition-colors"
 			>
-				<i class="nf text-blue-500 {selectedIndex == i ? 'nf-fa-square' : 'nf-fa-square_o'}"></i>
+				<i class="nf text-blue-500 {$selectedIndex == i ? 'nf-fa-square' : 'nf-fa-square_o'}"></i>
 				<span>{result}</span>
 			</div>
 		{/each}

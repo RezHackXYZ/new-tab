@@ -17,5 +17,5 @@
 		</button>
 	</div>
 	<h1 class="text-4xl text-blue-600">Settings</h1>
-	<p class="text-blue-400">Random setting for testing, i am needing to put this as why tf not?</p>
+	
 </div>
