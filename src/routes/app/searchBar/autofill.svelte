@@ -61,7 +61,7 @@
 		: 'invisible opacity-0'}"
 >
 	{#if $SearchingValue.trim() == ""}
-		<div class="text-center text-lg text-blue-400">Search soming</div>
+		<div class="text-center text-lg text-blue-400">Type something!</div>
 	{:else if results.length > 0}
 		{#each results as result, i}
 			<div

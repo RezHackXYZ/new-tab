@@ -35,7 +35,7 @@
 		type="text"
 		bind:this={bar}
 		class="peer w-[50vw] rounded-lg px-4 py-2 text-xl text-blue-500 focus:outline-none"
-		placeholder="Search Some Shit..."
+		placeholder="Search..."
 		onfocus={() => {
 			IsSearching.set(true);
 			$selectedIndex = 0;
