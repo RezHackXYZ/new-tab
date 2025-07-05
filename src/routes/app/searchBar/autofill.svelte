@@ -17,6 +17,8 @@
 				} else {
 					results = data[1];
 				}
+
+				$selectedIndex = 0;
 			})
 			.catch((error) => console.error("Error fetching autofill data:", error));
 	});
