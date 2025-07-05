@@ -1,4 +1,6 @@
-export let shortcuts = $state([
+import { writable } from "svelte/store";
+
+export let shortcuts = writable([
 	{
 		name: "Github",
 		logo: "github",

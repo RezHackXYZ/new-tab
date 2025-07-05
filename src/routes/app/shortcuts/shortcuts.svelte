@@ -1,35 +1,18 @@
 <script>
-	let shortcuts = [
-		{
-			name: "Github",
-			logo: "github",
-			link: "https://github.com",
-		},
-		{
-			name: "Gmail",
-			logo: "gmail",
-			link: "https://mail.google.com",
-		},
-		{
-			name: "Figma",
-			logo: "figma",
-			link: "https://figma.com",
-		},
-		{
-			name: "Slack",
-			logo: "slack",
-			link: "https://slack.com",
-		},
-	];
+	import { onMount } from "svelte";
+	import { shortcuts } from "./shortcutsStore.js";
+
+	onMount(() => {
+		shortcuts.set(JSON.parse(localStorage.getItem("shortcuts")) || $shortcuts);
+	});
 </script>
 
-<div class="flex justify-center p-3 gap-3">
-	{#each shortcuts as shortcut}
+<div class="flex justify-center gap-3 p-3">
+	{#each $shortcuts as shortcut}
 		<a class="group overflow-y-hidden" href={shortcut.link}>
 			<button
 				class="flex h-15 w-15 translate-y-7 cursor-pointer items-center justify-center rounded-xl border-4 border-blue-400 bg-blue-300 transition group-hover:translate-0"
 			>
-				<!-- <i class="nf {shortcut.logo} text-3xl text-blue-500"></i> -->
 				<img
 					class="h-10 w-10"
 					alt="shortcut logo for {shortcut.name}"

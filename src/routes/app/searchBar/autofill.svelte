@@ -1,6 +1,6 @@
 <script>
 	import { IsSearching, SearchingValue, selectedIndex } from "./SearchBarStore";
-	import { shortcuts } from "../shortcuts/shortcuts.svelte.js";
+	import { shortcuts } from "../shortcuts/shortcutsStore.js";
 
 	let results = $state([]);
 
@@ -12,8 +12,8 @@
 			.then((data) => {
 				const num = Number($SearchingValue);
 
-				if (!isNaN(num) && Number.isInteger(num) && num > 0 && shortcuts[num - 1] !== undefined) {
-					results = [`${shortcuts[num - 1].name} - Shortcut ${[$SearchingValue]}`, ...data[1]];
+				if (!isNaN(num) && Number.isInteger(num) && num > 0 && $shortcuts[num - 1] !== undefined) {
+					results = [`${$shortcuts[num - 1].name} - Shortcut ${[$SearchingValue]}`, ...data[1]];
 				} else {
 					results = data[1];
 				}
@@ -45,9 +45,9 @@
 				$selectedIndex == 0 &&
 				Number.isInteger(num) &&
 				num > 0 &&
-				shortcuts[num - 1] !== undefined
+				$shortcuts[num - 1] !== undefined
 			) {
-				window.location.href = shortcuts[num - 1].link;
+				window.location.href = $shortcuts[num - 1].link;
 			} else if (results[$selectedIndex]) {
 				window.location.href = `https://www.google.com/search?q=${encodeURIComponent(results[$selectedIndex])}`;
 			}
